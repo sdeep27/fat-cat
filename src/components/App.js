@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+import Title from './Title.js';
+import Gif from './Gif.js'
 import '../css/App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      
+    }
+  }
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <h2>Super Catzz</h2>
-        </div>
-        <p className="App-intro">
-          YOLO.
-        </p>
+        <Title />
+        <Gif />
       </div>
     );
   }
