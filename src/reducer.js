@@ -8,7 +8,8 @@ import {
 const initialState = {
   allCats: [],
   index: 0,
-  loading: true
+  loading: true,
+  error: false
 }
 
 export default function reducer(state = initialState, action) {
@@ -24,10 +25,15 @@ export default function reducer(state = initialState, action) {
         loading: true 
       }
     case FETCH_CATS_SUCCESS:
+      const newCats = action.response.data.map(item => item.images.fixed_height.url)
       return {
         ...state,
         loading: false,
-        allCats: [...state.allCats, ...action.newCats]
+        allCats: [...state.allCats, ...newCats]
+      }
+    case FETCH_CATS_FAILURE:
+      return {
+        ...state
       }
     default:
       return state;
